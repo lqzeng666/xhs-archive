@@ -1,0 +1,16 @@
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# WorkBuddy 内部文件（不需要公开）
+.workbuddy/
+.codebuddy/
+
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+
+# 编辑器
+.vscode/
+.idea/

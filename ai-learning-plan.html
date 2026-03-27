@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>14天AI学习计划 · 小红书热门版</title>
+  <style>
+    :root {
+      --red: #ff2442;
+      --pink: #ff6b81;
+      --light-pink: #fff0f2;
+      --orange: #ff7043;
+      --purple: #7c4dff;
+      --blue: #448aff;
+      --green: #00c853;
+      --teal: #00bcd4;
+      --dark: #1a1a2e;
+      --text: #333;
+      --gray: #888;
+      --card-bg: #fff;
+      --bg: #fafafa;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, #ff2442 0%, #ff6b81 40%, #ff9a9e 80%, #fecfef 100%);
+      padding: 60px 20px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+      animation: shimmer 6s ease-in-out infinite;
+    }
+    @keyframes shimmer {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.1) rotate(10deg); }
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.25);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.4);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 6vw, 52px);
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .hero p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.9);
+      max-width: 560px;
+      margin: 0 auto 28px;
+      position: relative;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .stat-item {
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 14px;
+      padding: 10px 20px;
+      color: #fff;
+      font-size: 13px;
+    }
+    .stat-item strong {
+      font-size: 22px;
+      font-weight: 800;
+      display: block;
+      line-height: 1.2;
+    }
+
+    /* ===== TRENDING TAGS ===== */
+    .trending-section {
+      background: #fff;
+      padding: 24px 20px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .trending-section h2 {
+      font-size: 14px;
+      color: var(--gray);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .tag:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+    .tag-red { background: #fff0f2; color: var(--red); border: 1px solid #ffd0d6; }
+    .tag-purple { background: #f3f0ff; color: var(--purple); border: 1px solid #d4c8ff; }
+    .tag-blue { background: #e8f4ff; color: var(--blue); border: 1px solid #c0dbff; }
+    .tag-green { background: #e8faf0; color: var(--green); border: 1px solid #b0ecd0; }
+    .tag-orange { background: #fff4ee; color: var(--orange); border: 1px solid #ffd4b8; }
+    .tag-teal { background: #e0f7fa; color: var(--teal); border: 1px solid #a0e7f0; }
+
+    /* ===== MAIN LAYOUT ===== */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 20px;
+    }
+
+    /* ===== SECTION HEADER ===== */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .section-header .dot {
+      width: 6px;
+      height: 32px;
+      background: linear-gradient(to bottom, var(--red), var(--pink));
+      border-radius: 3px;
+    }
+    .section-header h2 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--dark);
+    }
+    .section-header .count {
+      background: var(--light-pink);
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-left: 6px;
+    }
+
+    /* ===== WEEK CARD ===== */
+    .week-block {
+      margin-bottom: 48px;
+    }
+    .week-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .week-badge {
+      padding: 6px 18px;
+      border-radius: 22px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .week1 { background: linear-gradient(135deg, #ff2442, #ff6b81); }
+    .week2 { background: linear-gradient(135deg, #7c4dff, #448aff); }
+    .week-subtitle {
+      font-size: 13px;
+      color: var(--gray);
+      flex: 1;
+    }
+
+    /* ===== DAY CARD ===== */
+    .day-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .day-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border: 1px solid #f0f0f0;
+      transition: transform 0.25s, box-shadow 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .day-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .day-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+    }
+    .card-accent-red::before { background: linear-gradient(90deg, #ff2442, #ff6b81); }
+    .card-accent-purple::before { background: linear-gradient(90deg, #7c4dff, #ab47bc); }
+    .card-accent-blue::before { background: linear-gradient(90deg, #448aff, #26c6da); }
+    .card-accent-green::before { background: linear-gradient(90deg, #00c853, #64dd17); }
+    .card-accent-orange::before { background: linear-gradient(90deg, #ff7043, #ffca28); }
+    .card-accent-teal::before { background: linear-gradient(90deg, #00bcd4, #1de9b6); }
+    .card-accent-indigo::before { background: linear-gradient(90deg, #3f51b5, #7c4dff); }
+
+    .day-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .day-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 900;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .num-red { background: linear-gradient(135deg, #ff2442, #ff6b81); }
+    .num-purple { background: linear-gradient(135deg, #7c4dff, #ab47bc); }
+    .num-blue { background: linear-gradient(135deg, #448aff, #26c6da); }
+    .num-green { background: linear-gradient(135deg, #00c853, #64dd17); }
+    .num-orange { background: linear-gradient(135deg, #ff7043, #ffca28); }
+    .num-teal { background: linear-gradient(135deg, #00bcd4, #1de9b6); }
+    .num-indigo { background: linear-gradient(135deg, #3f51b5, #7c4dff); }
+
+    .day-title-wrap { flex: 1; }
+    .day-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.3;
+    }
+    .day-emoji {
+      font-size: 18px;
+      margin-right: 4px;
+    }
+    .hot-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 10px;
+      color: var(--red);
+      background: var(--light-pink);
+      border: 1px solid #ffd0d6;
+      padding: 2px 6px;
+      border-radius: 8px;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+
+    .task-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .task-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      color: #444;
+    }
+    .task-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--pink);
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+
+    .time-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #f5f5f5;
+      color: #666;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 8px;
+      margin-top: 12px;
+    }
+
+    .output-box {
+      background: linear-gradient(135deg, #fff8f8, #fff3f5);
+      border: 1px dashed #ffb3bd;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 12px;
+      color: #666;
+      margin-top: 12px;
+    }
+    .output-box strong {
+      color: var(--red);
+      display: block;
+      margin-bottom: 3px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ===== TOOLS SECTION ===== */
+    .tools-section {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      border-radius: 24px;
+      padding: 36px;
+      margin-bottom: 48px;
+      color: #fff;
+    }
+    .tools-section h3 {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 12px;
+    }
+    .tool-item {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 14px;
+      transition: background 0.2s;
+    }
+    .tool-item:hover { background: rgba(255,255,255,0.14); }
+    .tool-icon { font-size: 28px; margin-bottom: 8px; }
+    .tool-name { font-size: 13px; font-weight: 700; color: #fff; }
+    .tool-desc { font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 3px; }
+
+    /* ===== TIPS ===== */
+    .tips-section {
+      background: linear-gradient(135deg, #fff9e6, #fffbf0);
+      border: 1px solid #ffe566;
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 48px;
+    }
+    .tips-section h3 {
+      font-size: 17px;
+      font-weight: 800;
+      color: #b07d00;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tips-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 10px;
+    }
+    .tip-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      color: #555;
+    }
+    .tip-item .tip-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ===== PROGRESS TRACK ===== */
+    .progress-track {
+      background: #fff;
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+      margin-bottom: 48px;
+      border: 1px solid #f0f0f0;
+    }
+    .progress-track h3 {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 20px;
+    }
+    .progress-bar-wrap {
+      margin-bottom: 14px;
+    }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    .progress-label span:first-child { color: var(--dark); }
+    .progress-label span:last-child { color: var(--gray); }
+    .bar-bg {
+      background: #f0f0f0;
+      border-radius: 8px;
+      height: 10px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 8px;
+      transition: width 1s ease;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      padding: 32px 20px 48px;
+      font-size: 13px;
+      color: var(--gray);
+      border-top: 1px solid #f0f0f0;
+    }
+    footer .footer-logo {
+      font-size: 22px;
+      font-weight: 900;
+      background: linear-gradient(90deg, #ff2442, #ff6b81);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 16px 60px; }
+      .tools-section, .progress-track { padding: 24px 16px; }
+      .day-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🔥 小红书热门话题 · 2026版</div>
+  <h1>14天AI学习计划</h1>
+  <p>基于小红书最近热门帖子整理 · 从零入门到会用AI工具 · 每天30-60分钟</p>
+  <div class="hero-stats">
+    <div class="stat-item"><strong>14</strong>天</div>
+    <div class="stat-item"><strong>30-60</strong>分钟/天</div>
+    <div class="stat-item"><strong>10+</strong>款热门AI工具</div>
+    <div class="stat-item"><strong>零基础</strong>可入手</div>
+  </div>
+</div>
+
+<!-- TRENDING TAGS -->
+<div class="trending-section">
+  <div style="max-width:960px;margin:0 auto">
+    <h2>🏷️ 本计划涵盖热门话题</h2>
+    <div class="tag-list">
+      <span class="tag tag-red">🔥 Prompt工程</span>
+      <span class="tag tag-purple">🚀 Vibe Coding</span>
+      <span class="tag tag-blue">🤖 AI智能体</span>
+      <span class="tag tag-orange">🎨 AI绘图</span>
+      <span class="tag tag-green">💻 Cursor编程</span>
+      <span class="tag tag-teal">📱 DeepSeek</span>
+      <span class="tag tag-red">🧠 MCP协议</span>
+      <span class="tag tag-purple">🎬 AI视频</span>
+      <span class="tag tag-blue">📄 AI写作</span>
+      <span class="tag tag-orange">💡 一人公司</span>
+      <span class="tag tag-green">🔗 RAG技术</span>
+      <span class="tag tag-teal">⚡ 自动化工作流</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- WEEK 1 -->
+  <div class="week-block">
+    <div class="section-header">
+      <div class="dot"></div>
+      <h2>第一周：入门篇</h2>
+      <span class="count">Day 1-7</span>
+    </div>
+    <div class="week-title">
+      <span class="week-badge week1">Week 1</span>
+      <span class="week-subtitle">建立认知 · 掌握主流AI工具 · 开始日常实践</span>
+    </div>
+
+    <div class="day-grid">
+
+      <!-- Day 1 -->
+      <div class="day-card card-accent-red">
+        <div class="day-header">
+          <div class="day-num num-red">1</div>
+          <div class="day-title-wrap">
+            <div class="day-title"><span class="day-emoji">🤖</span>认识AI大模型</div>
+            <div class="hot-label">🔥 入门必看</div>
+          </div>
+        </div>
+        <ul class="task-list">
+          <li>了解GPT、Claude、DeepSeek、豆包各自的特点</li>
+          <li>注册并免费试用DeepSeek和豆包</li>
+          <li>用中文问一个你一直想知道的问题</li>
+          <li>对比不同AI的回答风格</li>
+        </ul>
+        <div class="output-box">
+          <strong>今日产出</strong>
+          记录3个你问过AI的问题和最满意的答案截图
+        </div>
+        <div class="time-badge">⏱ 约30分钟</div>
+      </div>
+
+      <!-- Day 2 -->
+      <div class="day-card card-accent-purple">
+        <div class="day-header">
+          <div class="day-num num-purple">2</div>
+          <div class="day-title-wrap">
+            <div class="day-title"><span class="day-emoji">✍️</span>Prompt提示词入门</div>
+            <div class="hot-label">🔥 小红书超热</div>
+          </div>
+        </div>
+        <ul class="task-list">
+          <li>学习"角色+任务+格式+限制"提示词公式</li>
+          <li>练习：让AI扮演专家给你解答问题</li>
+          <li>对比"好提示词"和"烂提示词"的效果差距</li>
+          <li>收藏3条实用万能提示词模板</li>
+        </ul>
+        <div class="output-box">
+          <strong>今日产出</strong>
+          写出你自己的第一条专属提示词模板
+        </div>
+        <div class="time-badge">⏱ 约45分钟</div>
+      </div>
+
+      <!-- Day 3 -->
+      <div class="day-card card-accent-orange">
+        <div class="day-header">
+          <div class="day-num num-orange">3</div>
+          <div class="day-title-wrap">
+            <div class="day-title"><span class="day-emoji">🎨</span>AI绘图初体验</div>
+            <div class="hot-label">🔥 种草必备</div>
+          </div>
+        </div>
+        <ul class="task-list">
+          <li>注册Midjourney或使用国内即梦AI / 通义万相</li>
+          <li>用中文描述生成你的第一张AI图</li>
+          <li>学习基础参数：风格、比例、质量关键词</li>
+          <li>尝试生成头像/壁纸/产品概念图</li>
+        </ul>
+        <div class="output-box">
+          <strong>今日产出</strong>
+          生成3张满意的AI图片，可作为头像或壁纸
+        </div>
+        <div class="time-badge">⏱ 约45分钟</div>
+      </div>
+
+      <!-- Day 4 -->
+      <div class="day-card card-accent-blue">
+        <div class="day-header">
+          <div class="day-num num-blue">4</div>
+          <div class="day-title-wrap">
+            <div class="day-title"><span class="day-emoji">📝</span>AI写作实战</div>
+            <div class="hot-label">🔥 效率神器</div>
+          </div>
+        </div>
+        <ul class="task-list">
+          <li>用AI生成一篇小红书风格笔记</li>
+          <li>让AI帮你改写/润色自己的文章</li>
+          <li>练习"续写+扩写+压缩"三种写作技巧</li>
+          <li>用AI生成工作邮件/汇报PPT大纲</li>
+        </ul>
+        <div class="output-box">
+          <strong>今日产出</strong>
+          用AI写一篇可以发布的小红书图文笔记
+        </div>
+        <div class="time-badge">⏱ 约40分钟</div>
+      </div>
+
+      <!-- Day 5 -->
+      <div class="day-card card-accent-teal">
+        <div class="day-header">
+          <div class="day-num num-teal">5</div>
+          <div class="day-title-wrap">
+            <div class="day-title"><span class="day-emoji">🎬</span>AI视频生成</div>
+            <div class="hot-label">🔥 2026最热</div>
+          </div>
+        </div>
+        <ul class="task-list">
+          <li>体验即梦AI / Runway / Pika生成短视频</li>
+          <li>用文字描述生成5秒短片</li>
+          <li>尝试图片转视频（让静态图动起来）</li>
+          <li>了解角色一致性技巧</li>
+        </ul>
+        <div class="output-box">
+          <strong>今日产出</strong>
+          生成1条5-10秒的AI短视频素材
+        </div>
+        <div class="time-badge">⏱ 约50分钟</div>
+      </div>
+
+      <!-- Day 6 -->
+      <div class="day-card card-accent-green">
+        <div class="day-header">
+          <div class="day-num num-green">6</div>
+          <div class="day-title-wrap">
+            <div class="day-title"><span class="day-emoji">🗣️</span>AI语音与克隆</div>
+            <div class="hot-label">🔥 博主最爱</div>
+          </div>
+        </div>
+        <ul class="task-list">
+          <li>体验通义听悟/飞书妙记自动会议转录</li>
+          <li>用AI生成真人语音配音</li>
+          <li>了解ElevenLabs/豆包语音克隆功能</li>
+          <li>为你的AI视频添加AI配音</li>
+        </ul>
+        <div class="output-box">
+          <strong>今日产出</strong>
+          一段带AI语音的短视频或播客音频
+        </div>
+        <div class="time-badge">⏱ 约40分钟</div>
+      </div>
+
+      <!-- Day 7 -->
+      <div class="day-card card-accent-indigo">
+        <div class="day-header">
+          <div class="day-num num-indigo">7</div>
+          <div class="day-title-wrap">
+            <div class="day-title"><span class="day-emoji">🔄</span>第一周总结+工作流</div>
+            <div class="hot-label">📌 每周复盘</div>
+          </div>
+        </div>
+        <ul class="task-list">
+          <li>整理这周学到的5个核心技巧</li>
+          <li>搭建你的第一个AI工作流（文案+配图）</li>
+          <li>找到1个可以真正用AI提效的日常场景</li>
+          <li>加入一个AI学习社群或关注3个AI博主</li>
+        </ul>
+        <div class="output-box">
+          <strong>今日产出</strong>
+          一套完整的"AI图文内容生产流程"文档
+        </div>
+        <div class="time-badge">⏱ 约60分钟</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- WEEK 2 -->
+  <div class="week-block">
+    <div class="section-header">
+      <div class="dot" style="background: linear-gradient(to bottom, #7c4dff, #448aff);"></div>
+      <h2>第二周：进阶篇</h2>
+      <span class="count" style="background:#f3f0ff;color:#7c4dff;">Day 8-14</span>
+    </div>
+    <div class="week-title">
+      <span class="week-badge week2">Week 2</span>
+      <span class="week-subtitle">深度玩法 · AI编程 · 智能体 · 副业变现</span>
+    </div>
+
+    <div class="day-grid">
+
+      <!-- Day 8 -->
+      <div class="day-card card-accent-purple">
+        <div class="day-header">
+          <div class="day-num num-purple">8</div>
+          <div class="day-title-wrap">
+            <div class="day-title"><span class="day-emoji">💻</span>Cursor AI编程入门</div>
+            <div class="hot-label">🔥 程序员必学</div>
+          </div>
+        </div>
+        <ul class="task-list">
+          <li>下载安装Cursor，了解界面布局</li>
+          <li>用自然语言描述让AI帮你写第一段代码</li>
+          <li>体验Cursor的Tab键自动补全</li>
+          <li>用Chat功能理解和修改现有代码</li>
+        </ul>
+        <div class="output-box">
+          <strong>今日产出</strong>
+          用Cursor生成一个简单的HTML个人主页
+        </div>
+        <div class="time-badge">⏱ 约60分钟</div>
+      </div>
+
+      <!-- Day 9 -->
+      <div class="day-card card-accent-blue">
+        <div class="day-header">
+          <div class="day-num num-blue">9</div>
+          <div class="day-title-wrap">
+            <div class="day-title"><span class="day-emoji">🚀</span>Vibe Coding实战</div>
+            <div class="hot-label">🔥 2026超热词</div>
+          </div>
+        </div>
+        <ul class="task-list">
+          <li>用中文描述想法，让AI生成完整的小应用</li>
+          <li>尝试用Claude Artifacts生成可运行代码片段</li>
+          <li>学习用截图/草图让AI理解设计稿</li>
+          <li>修复AI代码中的bug（用AI帮AI改bug）</li>
+        </ul>
+        <div class="output-box">
+          <strong>今日产出</strong>
+          一个有实际功能的小工具（计算器/待办清单等）
+        </div>
+        <div class="time-badge">⏱ 约60分钟</div>
+      </div>
+
+      <!-- Day 10 -->
+      <div class="day-card card-accent-orange">
+        <div class="day-header">
+          <div class="day-num num-orange">10</div>
+          <div class="day-title-wrap">
+            <div class="day-title"><span class="day-emoji">🧠</span>AI智能体搭建</div>
+            <div class="hot-label">🔥 进阶核心</div>
+          </div>
+        </div>
+        <ul class="task-list">
+          <li>了解AI Agent的基本概念和工作原理</li>
+          <li>在扣子(Coze)上搭建第一个简单Bot</li>
+          <li>给Bot设定人设、知识库和回复风格</li>
+          <li>测试你的专属AI助理能力</li>
+        </ul>
+        <div class="output-box">
+          <strong>今日产出</strong>
+          一个能回答特定领域问题的专属AI助理
+        </div>
+        <div class="time-badge">⏱ 约60分钟</div>
+      </div>
+
+      <!-- Day 11 -->
+      <div class="day-card card-accent-teal">
+        <div class="day-header">
+          <div class="day-num num-teal">11</div>
+          <div class="day-title-wrap">
+            <div class="day-title"><span class="day-emoji">⚡</span>AI自动化工作流</div>
+            <div class="hot-label">🔥 效率神器</div>
+          </div>
+        </div>
+        <ul class="task-list">
+          <li>了解n8n/扣子工作流的基本概念</li>
+          <li>搭建"自动总结新闻→生成文案→发布"流程</li>
+          <li>用AI+表格自动化处理重复工作</li>
+          <li>了解MCP协议让AI连接外部工具</li>
+        </ul>
+        <div class="output-box">
+          <strong>今日产出</strong>
+          一条能自动跑起来的AI内容生产工作流
+        </div>
+        <div class="time-badge">⏱ 约60分钟</div>
+      </div>
+
+      <!-- Day 12 -->
+      <div class="day-card card-accent-red">
+        <div class="day-header">
+          <div class="day-num num-red">12</div>
+          <div class="day-title-wrap">
+            <div class="day-title"><span class="day-emoji">💰</span>AI副业变现思路</div>
+            <div class="hot-label">🔥 博主最爱分享</div>
+          </div>
+        </div>
+        <ul class="task-list">
+          <li>盘点5种主流AI副业方向（绘图/写作/编程/Agent）</li>
+          <li>分析"一人公司"(OPC)商业模式</li>
+          <li>研究小红书/B站AI博主的涨粉策略</li>
+          <li>找到1个自己能快速上手的变现切入点</li>
+        </ul>
+        <div class="output-box">
+          <strong>今日产出</strong>
+          一份属于你的AI副业方向分析报告
+        </div>
+        <div class="time-badge">⏱ 约50分钟</div>
+      </div>
+
+      <!-- Day 13 -->
+      <div class="day-card card-accent-green">
+        <div class="day-header">
+          <div class="day-num num-green">13</div>
+          <div class="day-title-wrap">
+            <div class="day-title"><span class="day-emoji">🔬</span>RAG与知识库</div>
+            <div class="hot-label">📌 进阶必懂</div>
+          </div>
+        </div>
+        <ul class="task-list">
+          <li>理解RAG（检索增强生成）是什么</li>
+          <li>在扣子上上传文档，构建个人知识库Bot</li>
+          <li>用AI问答自己的读书笔记/工作文档</li>
+          <li>了解向量数据库的基本概念</li>
+        </ul>
+        <div class="output-box">
+          <strong>今日产出</strong>
+          一个能回答"你的专属知识"问题的AI助理
+        </div>
+        <div class="time-badge">⏱ 约55分钟</div>
+      </div>
+
+      <!-- Day 14 -->
+      <div class="day-card card-accent-indigo">
+        <div class="day-header">
+          <div class="day-num num-indigo">14</div>
+          <div class="day-title-wrap">
+            <div class="day-title"><span class="day-emoji">🎓</span>两周总结 · 下一步</div>
+            <div class="hot-label">📌 结业典礼</div>
+          </div>
+        </div>
+        <ul class="task-list">
+          <li>整理14天学习成果，制作个人AI工具清单</li>
+          <li>完成一个综合项目（AI博主内容套件/AI小工具等）</li>
+          <li>设定接下来30天的深度学习方向</li>
+          <li>分享你的学习成果到小红书/朋友圈</li>
+        </ul>
+        <div class="output-box">
+          <strong>今日产出</strong>
+          一份完整的"AI能力成长档案"，可对外展示
+        </div>
+        <div class="time-badge">⏱ 约60分钟</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOOLS -->
+  <div class="tools-section">
+    <h3>🛠️ 计划涉及的热门AI工具清单</h3>
+    <div class="tools-grid">
+      <div class="tool-item">
+        <div class="tool-icon">🧠</div>
+        <div class="tool-name">DeepSeek</div>
+        <div class="tool-desc">国产最强对话AI，免费好用</div>
+      </div>
+      <div class="tool-item">
+        <div class="tool-icon">🤖</div>
+        <div class="tool-name">豆包</div>
+        <div class="tool-desc">字节出品，多模态全能</div>
+      </div>
+      <div class="tool-item">
+        <div class="tool-icon">⚡</div>
+        <div class="tool-name">Claude</div>
+        <div class="tool-desc">代码写作能力顶尖</div>
+      </div>
+      <div class="tool-item">
+        <div class="tool-icon">💻</div>
+        <div class="tool-name">Cursor</div>
+        <div class="tool-desc">AI编程IDE，Vibe Coding首选</div>
+      </div>
+      <div class="tool-item">
+        <div class="tool-icon">🎨</div>
+        <div class="tool-name">即梦AI</div>
+        <div class="tool-desc">国产图片/视频生成</div>
+      </div>
+      <div class="tool-item">
+        <div class="tool-icon">🖼️</div>
+        <div class="tool-name">Midjourney</div>
+        <div class="tool-desc">顶级AI绘图，质感拉满</div>
+      </div>
+      <div class="tool-item">
+        <div class="tool-icon">🤖</div>
+        <div class="tool-name">扣子 Coze</div>
+        <div class="tool-desc">字节AI智能体平台</div>
+      </div>
+      <div class="tool-item">
+        <div class="tool-icon">🎬</div>
+        <div class="tool-name">Runway</div>
+        <div class="tool-desc">专业AI视频生成</div>
+      </div>
+      <div class="tool-item">
+        <div class="tool-icon">🔗</div>
+        <div class="tool-name">n8n</div>
+        <div class="tool-desc">AI工作流自动化</div>
+      </div>
+      <div class="tool-item">
+        <div class="tool-icon">🗣️</div>
+        <div class="tool-name">ElevenLabs</div>
+        <div class="tool-desc">AI语音克隆配音</div>
+      </div>
+      <div class="tool-item">
+        <div class="tool-icon">📄</div>
+        <div class="tool-name">通义听悟</div>
+        <div class="tool-desc">会议/视频转录摘要</div>
+      </div>
+      <div class="tool-item">
+        <div class="tool-icon">🌐</div>
+        <div class="tool-name">MCP协议</div>
+        <div class="tool-desc">AI连接外部工具标准</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-track">
+    <h3>📊 能力成长路径预期</h3>
+    <div class="progress-bar-wrap">
+      <div class="progress-label"><span>Prompt工程</span><span>完成Day 1-2后掌握</span></div>
+      <div class="bar-bg"><div class="bar-fill" style="width:85%;background:linear-gradient(90deg,#ff2442,#ff6b81)"></div></div>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-label"><span>AI生成内容（AIGC）</span><span>完成Day 3-6后掌握</span></div>
+      <div class="bar-bg"><div class="bar-fill" style="width:80%;background:linear-gradient(90deg,#ff7043,#ffca28)"></div></div>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-label"><span>AI辅助编程</span><span>完成Day 8-9后掌握</span></div>
+      <div class="bar-bg"><div class="bar-fill" style="width:70%;background:linear-gradient(90deg,#448aff,#26c6da)"></div></div>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-label"><span>AI智能体开发</span><span>完成Day 10-11后掌握</span></div>
+      <div class="bar-bg"><div class="bar-fill" style="width:65%;background:linear-gradient(90deg,#7c4dff,#ab47bc)"></div></div>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-label"><span>AI工作流自动化</span><span>完成Day 11后掌握</span></div>
+      <div class="bar-bg"><div class="bar-fill" style="width:60%;background:linear-gradient(90deg,#00bcd4,#1de9b6)"></div></div>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-label"><span>AI变现能力</span><span>完成Day 12后初步了解</span></div>
+      <div class="bar-bg"><div class="bar-fill" style="width:50%;background:linear-gradient(90deg,#00c853,#64dd17)"></div></div>
+    </div>
+  </div>
+
+  <!-- TIPS -->
+  <div class="tips-section">
+    <h3>💡 小红书博主一致推荐的学习心法</h3>
+    <div class="tips-list">
+      <div class="tip-item">
+        <span class="tip-icon">🎯</span>
+        <span>每天只学一件事，做到能实操输出再算完成</span>
+      </div>
+      <div class="tip-item">
+        <span class="tip-icon">📸</span>
+        <span>边学边截图，整理成笔记方便随时复盘</span>
+      </div>
+      <div class="tip-item">
+        <span class="tip-icon">🔄</span>
+        <span>把AI用到真实工作中，效果比只看教程强10倍</span>
+      </div>
+      <div class="tip-item">
+        <span class="tip-icon">🤝</span>
+        <span>加入AI学习群，遇到问题有人解答进步更快</span>
+      </div>
+      <div class="tip-item">
+        <span class="tip-icon">🆓</span>
+        <span>先用免费工具练手，付费工具等技能稳定再投入</span>
+      </div>
+      <div class="tip-item">
+        <span class="tip-icon">📅</span>
+        <span>每周五做复盘总结，保持清醒知道自己学了什么</span>
+      </div>
+      <div class="tip-item">
+        <span class="tip-icon">⚡</span>
+        <span>Prompt工程是核心，所有工具的效果都取决于问法</span>
+      </div>
+      <div class="tip-item">
+        <span class="tip-icon">🚀</span>
+        <span>不要追求学完所有工具，找到1-2个真正提效的就够</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">AI学习计划</div>
+  <p>基于小红书热门帖子 · 2026年AI学习趋势整理 · 每天30-60分钟 · 14天建立AI思维</p>
+  <p style="margin-top:8px;font-size:12px">涵盖：Prompt工程 · Vibe Coding · AI绘图 · AI视频 · 智能体 · 自动化工作流 · AI变现</p>
+</footer>
+
+</body>
+</html>
